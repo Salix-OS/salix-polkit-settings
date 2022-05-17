@@ -1,7 +1,7 @@
 # About
 
 This repository holds additional PolicyKit rules as used in Salix. These
-files are typically installed under /usr/share/polkit-1/rules.d/ (which
+files are typically installed under `/usr/share/polkit-1/rules.d/` (which
 is what the Makefile does by calling `make install`).
 
 PolicyKit is an application-level toolkit for defining and handling the
