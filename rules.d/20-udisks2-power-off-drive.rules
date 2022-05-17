@@ -1,0 +1,8 @@
+/* Allow anyone in the plugdev group to power off removable drives.
+   Thunar uses this when ejecting a USB thumb drive */
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.udisks2.power-off-drive" &&
+        subject.isInGroup("plugdev")) {
+        return polkit.Result.YES;
+    }
+})

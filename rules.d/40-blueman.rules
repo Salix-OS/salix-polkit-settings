@@ -1,0 +1,11 @@
+/* Allow users in netdev group to use blueman feature requiring root without authentication */
+/* This is also in the blueman package, but it needs to load earlier to have any effect ~ gapan */
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.blueman.network.setup" ||
+         action.id == "org.blueman.dhcp.client" ||
+         action.id == "org.blueman.rfkill.setstate" ||
+         action.id == "org.blueman.pppd.pppconnect") &&
+        subject.isInGroup("netdev")) {
+        return polkit.Result.YES;
+    }
+});

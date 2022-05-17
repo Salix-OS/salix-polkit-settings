@@ -1,0 +1,19 @@
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.xfce.power.backlight-helper" &&
+        subject.active == true && subject.local == true &&
+        subject.isInGroup("users")) {
+            return polkit.Result.YES;
+    }
+
+    return polkit.Result.NOT_HANDLED;
+});
+
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.xfce.power.xfce4-pm-helper" &&
+        subject.active == true && subject.local == true &&
+        subject.isInGroup("power")) {
+            return polkit.Result.YES;
+    }
+
+    return polkit.Result.NOT_HANDLED;
+});
