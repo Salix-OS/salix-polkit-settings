@@ -1,0 +1,9 @@
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.accounts.change-own-user-data" &&
+        subject.active == true && subject.local == true &&
+        subject.isInGroup("users")) {
+            return polkit.Result.YES;
+    }
+
+    return polkit.Result.NOT_HANDLED;
+});
